@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>오늘의 켠왕 3선</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>🎮 오늘의 켠왕 3선</h1>
+    <p>우리 팀이 좋아하는 3가지 게임을 테마로 한 2025 미니 홈페이지 프로젝트!</p>
+</header>
+
+<section class="intro-section">
+    <div class="intro-text">
+        <h2>🔍 켠김에 왕까지(켠왕)이란?</h2>
+        <p>
+            ‘켠김에 왕까지’, 줄여서 ‘켠왕’은 게임을 시작한 김에 끝판왕까지 깨버리겠다는 의미의 인터넷 밈입니다.<br>
+            끝까지 밀어붙이는 도전 정신 때문에 많은 게이머들에게 널리 사용됩니다.
+        </p>
+
+        <h2>✔ 오늘의 켠왕 3선 소개</h2>
+        <p>
+            저희 팀은 “켠왕 정신”을 가장 잘 보여주는 세 가지 게임을 선정했습니다.<br>
+            감동, 중독성, 난이도를 모두 담아 각 팀원이 직접 담당하여 소개합니다.
+        </p>
+
+        <h2>😄 오늘의 켠왕 3선을 추천하는 이유</h2>
+        <p>
+            세 게임 모두 “한 번 시작하면 끝까지 가야 하는” 켠왕의 매력을 담고 있기 때문입니다.<br>
+            롤은 중독성, 산나비는 감동, 얼불춤은 도전 욕구가 강해 자연스럽게 켠왕이 됩니다.
+        </p>
+    </div>
+
+    <div class="intro-image">
+        <img src="img/켠왕.jpg" width="320">
+    </div>
+</section>
+
+
+<!-- 🎵 산나비 OST 배경 음악 UI -->
+<div class="music-player">
+    <audio id="bgm" autoplay loop>
+        <source src="mp4/배경음악.mp4" type="audio/mp4">
+    </audio>
+
+    <div class="music-card">
+        <img src="img/음악사진.jpg" class="album-img">
+        <p class="music-title">Ending Means Starting Again<br><small>(Feat. Kang Ayun)</small></p>
+        <div class="music-controls">
+            <button id="playPauseBtn">⏸</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const bgm = document.getElementById("bgm");
+    const btn = document.getElementById("playPauseBtn");
+
+    btn.onclick = () => {
+        if (bgm.paused) {
+            bgm.play();
+            btn.innerText = "⏸";
+        } else {
+            bgm.pause();
+            btn.innerText = "▶";
+        }
+    };
+</script>
+
+<hr>
+
+<section>
+    <h2>🔥 선정된 게임</h2>
+    <ul>
+        <li><strong>리그 오브 레전드 (LOL)</strong> – 빡쳐도 나도 모르게 다시 켜는 게임</li>
+        <li><strong>산나비 (SANABI)</strong> – 눈물 나는 감동 스토리</li>
+        <li><strong>A Dance of Fire and Ice (얼불춤)</strong> – 극한의 난이도 리듬 게임</li>
+    </ul>
+</section>
+
+<hr>
+
+<!-- 🔵 LOL SECTION -->
+<section class="game-section lol-section">
+
+    <video class="bg-video" autoplay muted loop playsinline>
+        <source src="mp4/lol.mp4" type="video/mp4">
+    </video>
+
+    <div class="content">
+        <h2>① 리그 오브 레전드 (League of Legends)</h2>
+        <p><strong>담당자: 신영규</strong> — 현재 티어: 실버 (광물 탈출 희망자)</p>
+        <img src="img/lol.jpg.webp" width="450">
+
+        <h3>🎮 소주제: 빡쳐도 나도 모르게 찾는 게임</h3>
+        <p>
+            롤은 "하기 싫다" 말하면서도 결국 다시 켜는 기묘한 게임입니다.<br>
+            지면 멘탈이 터지고 “삭제함” 외치지만… 10분 뒤엔 또 로그인합니다.<br>
+            승리하면 기분이 좋아지고, 패배하면 “팀 탓”하며 또 한 판 돌립니다.
+        </p>
+
+        <p><strong>💬 신영규 TMI:</strong><br>
+            실버에서 벗어나고 싶어서 매년 골드를 다짐하지만…<br>
+            올해도 “다음 시즌엔 진짜 간다”라고 말하는 중.</p>
+
+        <h3>🌍 세계관</h3>
+        <p>
+            룬테라라는 거대한 세계에서 여러 지역과 세력이 맞서 싸웁니다.<br>
+            데마시아, 녹서스, 아이오니아 등 지역마다 복잡한 역사와 이야기가 존재합니다.
+        </p>
+    </div>
+</section>
+
+<hr>
+
+<!-- 🔵 SANABI SECTION -->
+<section class="game-section sanabi-section">
+
+    <video class="bg-video" autoplay muted loop playsinline>
+        <source src="mp4/sanabi.mp4" type="video/mp4">
+    </video>
+
+    <div class="content">
+        <h2>② 산나비 (SANABI)</h2>
+        <p><strong>담당자: 박민교 (조장)</strong> — 감동 엔딩 보고 휴지 3개 순삭함</p>
+        <img src="img/sanabi.jpg.webp" width="450">
+
+        <h3>🎮 소주제: 눈물 나는 감동 스토리</h3>
+        <p>
+            산나비는 감정선과 연출이 뛰어난 한국 인디 명작입니다.<br>
+            딸을 잃은 군인이 진실을 찾아가는 여정 속에서 감정이 폭발합니다.<br>
+            후반부에는 눈물이 앞을 가려 조작이 어려울 정도…
+        </p>
+
+        <p><strong>💬 박민교 TMI:</strong><br>
+            엔딩 보고 울다가 휴지를 또 뜯으러 갔다가 다시 울뻔함.</p>
+
+        <h3>🌍 줄거리</h3>
+        <p>
+            주인공은 딸의 죽음에 숨겨진 진실을 찾기 위해 거대 기업 마고 그룹의 비밀을 파헤칩니다.<br>
+            해커 금마리와 함께 실종 사건, 인격 데이터 실험 등 충격적 진실에 맞섭니다.<br>
+            마지막에는 가족애가 폭발하는 감동의 엔딩이 펼쳐집니다.
+        </p>
+    </div>
+</section>
+
+<hr>
+
+<!-- 🔵 ADOFAI SECTION -->
+<section class="game-section adofai-section">
+
+    <video class="bg-video" autoplay muted loop playsinline>
+        <source src="mp4/adofai.mp4" type="video/mp4">
+    </video>
+
+    <div class="content">
+        <h2>③ 얼불춤 (A Dance of Fire and Ice)</h2>
+        <p><strong>담당자: 박다온</strong> — 얼불춤만 천 시간 넘게 한 리듬 괴물</p>
+        <img src="img/rff.jpg.webp" width="450">
+
+        <h3>🎮 소주제: 극한의 난이도</h3>
+        <p>
+            얼불춤은 겉보기엔 단순하지만 박자 하나만 틀려도 즉시 실패하는 냉정한 게임입니다.<br>
+            반복 연습과 리듬감이 필수이며, 고난도 스테이지는 진짜 손이 덜덜 떨립니다.
+        </p>
+
+        <p><strong>💬 박다온 TMI:</strong><br>
+            얼불춤만 1,000시간 넘게 한 진짜 리듬 괴물.<br>
+            눈 감고도 몇 스테이지는 통과함.
+        </p>
+
+        <h3>🌍 게임 느낌</h3>
+        <p>
+            두 개의 에너지가 음악 박자에 맞춰 이동하는 독특한 구조.<br>
+            스테이지마다 규칙이 바뀌어 도전 욕구를 자극합니다.
+        </p>
+    </div>
+</section>
+
+<hr>
+
+<section>
+    <h2>👥 우리 팀 소개</h2>
+    <ul>
+        <li><strong>조장: 박민교</strong> — 산나비 담당 (눈물 담당도 겸함)</li>
+        <li><strong>조원: 박다온</strong> — 얼불춤 담당 (리듬괴물)</li>
+        <li><strong>조원: 신영규</strong> — 롤 담당 (실버 광물 탈출 희망자)</li>
+    </ul>
+</section>
+
+<footer>
+    <p>© 2025 오늘의 켠왕 3선 – Mini Homepage Project</p>
+</footer>
+
+</body>
+</html>
+
