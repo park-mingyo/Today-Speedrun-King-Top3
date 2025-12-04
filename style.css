@@ -1,54 +1,72 @@
-/* ------------------------------------ */
-/* GLOBAL STYLE */
-/* ------------------------------------ */
-
+/* ============================= */
+/*   기본 스타일 설정            */
+/* ============================= */
 body {
-    background: #0a0f24;
-    color: #e3e6ff;
-    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #0c1020;
+    color: #e6f3ff;
+    font-family: 'Pretendard', sans-serif;
     line-height: 1.7;
-    padding: 20px;
 }
 
-/* Titles */
-h1 {
-    color: #66d9ff;
+/* ============================= */
+/*   상단 제목 중앙 (고정 X)     */
+/* ============================= */
+header {
+    position: static;  /* 🔥 스크롤 내려도 고정 안 되게 변경 */
+    width: 100%;
     text-align: center;
-    font-size: 42px;
-    text-shadow: 0 0 12px #00aaff;
+    padding: 25px 0;
+    background: rgba(0,0,0,0);
+    backdrop-filter: none;
+    z-index: 1000;
+}
+
+header * {
+    pointer-events: auto;
+}
+
+h1 {
+    color: #7dfcff;
+    text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff;
 }
 
 h2, h3 {
-    color: #a6fffd;
-    text-shadow: 0 0 10px #00ffee;
+    color: #8bf5ff;
+    text-shadow: 0 0 8px #00eaff;
 }
 
 section {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    padding: 30px;
-    margin-bottom: 40px;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(8px);
+    padding: 40px 60px;
 }
 
-/* Intro Section Image Placement */
+/* ============================= */
+/*   인트로 섹션                 */
+/* ============================= */
 .intro-section {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    gap: 40px;
 }
 
 .intro-image img {
-    width: 300px;
-    border-radius: 20px;
-    box-shadow: 0px 0px 20px rgba(0,255,255,0.3);
+    width: 320px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #00eaff;
 }
 
-/* ------------------------------------ */
-/* Background Videos */
-/* ------------------------------------ */
+/* ============================= */
+/*   배경 영상 섹션               */
+/* ============================= */
+.game-section {
+    position: relative;
+    overflow: hidden;
+    padding: 50px 60px;
+    border-radius: 14px;
+    margin-bottom: 40px;
+}
 
 .bg-video {
     position: absolute;
@@ -57,71 +75,103 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -1; /* 영상이 실제로 보이도록 조정 */
-    opacity: 0.55; /* 선명도 증가 */
-    filter: brightness(0.95) contrast(1.15);
+    z-index: -2;
 }
 
 .game-section::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 5, 15, 0.45);
-    z-index: 0;
+    background: rgba(0,0,0,0.40);
+    z-index: -1;
 }
 
-/* ------------------------------------ */
-/* Images */
-/* ------------------------------------ */
-
-img {
-    border-radius: 14px;
-    width: 450px;
-    box-shadow: 0 0 20px rgba(0,255,255,0.4);
-    transition: 0.2s;
+.game-section .content {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    text-shadow:
+        0 0 6px rgba(0,0,0,0.8),
+        0 0 12px rgba(0,0,0,0.6);
 }
 
-img:hover {
-    transform: scale(1.03);
-}
-
-/* ------------------------------------ */
-/* Music Player */
-/* ------------------------------------ */
-
+/* ============================= */
+/*   음악 플레이어               */
+/* ============================= */
 .music-player {
     position: fixed;
-    top: 25px;
-    right: 25px;
-    z-index: 9999;
+    top: 20px;
+    right: 20px;
+    z-index: 50;
 }
 
 .music-card {
-    background: rgba(0,0,0,0.55);
-    padding: 15px 25px;
-    border-radius: 15px;
-    box-shadow: 0 0 12px rgba(0,255,255,0.35);
-    backdrop-filter: blur(6px);
+    width: 230px;
+    padding: 15px;
+    background: rgba(0,0,0,0);
+    border: none;
+    box-shadow: none;
+    border-radius: 14px;
     text-align: center;
+    color: white;
+    animation: floatCard 3s ease-in-out infinite;
+}
+
+.music-card img {
+    width: 100px;
+    border-radius: 10px;
+    margin-bottom: 3px;
 }
 
 .music-title {
-    color: white;
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    text-shadow: 0 0 6px #00ffff;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 4px;
 }
 
 .music-controls button {
-    font-size: 22px;
     background: none;
-    border: none;
-    color: #a6fffd;
+    border: 2px solid #7dfcff;
+    padding: 6px 12px;
+    font-size: 18px;
+    border-radius: 8px;
+    color: #7dfcff;
     cursor: pointer;
+    transition: 0.25s;
 }
 
 .music-controls button:hover {
-    color: #00eaff;
-    transform: scale(1.2);
+    background: #7dfcff;
+    color: #001018;
+}
+
+@keyframes floatCard {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+/* ============================= */
+/*   리스트 스타일                */
+/* ============================= */
+ul li {
+    font-size: 18px;
+    padding: 6px 0;
+}
+
+/* ============================= */
+/*   이미지 스타일                */
+/* ============================= */
+.content img {
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 12px #00d5ff;
+}
+
+/* ============================= */
+/*   푸터 중앙 정렬              */
+/* ============================= */
+footer {
+    text-align: center;   /* 🔥 중앙 정렬 */
+    padding-bottom: 30px;
 }
