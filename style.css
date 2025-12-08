@@ -175,3 +175,15 @@ footer {
     text-align: center;   /* 🔥 중앙 정렬 */
     padding-bottom: 30px;
 }
+.music-player {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.music-player.show {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+}

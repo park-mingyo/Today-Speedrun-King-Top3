@@ -235,6 +235,21 @@ window.addEventListener("scroll", () => {
     });
 });
 </script>
+<script>
+const musicPlayer = document.querySelector(".music-player");
+
+window.addEventListener("scroll", () => {
+    const introBottom = document.querySelector(".intro-section").getBoundingClientRect().bottom;
+
+    if (introBottom < 100) {
+        // 인트로 벗어나면 보이게
+        musicPlayer.classList.add("show");
+    } else {
+        // 다시 올라오면 숨기기
+        musicPlayer.classList.remove("show");
+    }
+});
+</script>
 
 </body>
 </html>
