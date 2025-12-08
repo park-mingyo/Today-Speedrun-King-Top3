@@ -54,21 +54,6 @@
     </div>
 </div>
 
-<script>
-    const bgm = document.getElementById("bgm");
-    const btn = document.getElementById("playPauseBtn");
-
-    btn.onclick = () => {
-        if (bgm.paused) {
-            bgm.play();
-            btn.innerText = "⏸";
-        } else {
-            bgm.pause();
-            btn.innerText = "▶";
-        }
-    };
-</script>
-
 <hr>
 
 <section>
@@ -89,11 +74,13 @@
         <source src="lol.mp4" type="video/mp4">
     </video>
 
+    <!-- 🔊 롤 전용 BGM -->
+    <audio id="lol-audio" src="lol_bgm.mp3"></audio>
+
     <div class="content">
         <h2>① 리그 오브 레전드 (League of Legends)</h2>
         <p><strong>담당자: 신영규</strong> — 현재 티어: 실버 (광물 탈출 희망자)</p>
 
-        <!-- 경로 수정 -->
         <img src="lol.jpg.webp" width="450">
 
         <h3>🎮 소주제: 빡쳐도 나도 모르게 찾는 게임</h3>
@@ -124,11 +111,13 @@
         <source src="sanabi.mp4" type="video/mp4">
     </video>
 
+    <!-- 🔊 산나비 전용 BGM -->
+    <audio id="sanabi-audio" src="sanabi_bgm.mp3"></audio>
+
     <div class="content">
         <h2>② 산나비 (SANABI)</h2>
         <p><strong>담당자: 박민교 (조장)</strong> — 감동 엔딩 보고 휴지 3개 순삭함</p>
 
-        <!-- 경로 수정 -->
         <img src="sanabi.jpg.webp" width="450">
 
         <h3>🎮 소주제: 눈물 나는 감동 스토리</h3>
@@ -159,11 +148,13 @@
         <source src="adofai.mp4" type="video/mp4">
     </video>
 
+    <!-- 🔊 얼불춤 전용 BGM -->
+    <audio id="adofai-audio" src="plum.R.mp3"></audio>
+
     <div class="content">
         <h2>③ 얼불춤 (A Dance of Fire and Ice)</h2>
         <p><strong>담당자: 박다온</strong> — 얼불춤만 천 시간 넘게 한 리듬 괴물</p>
 
-        <!-- 경로 수정 -->
         <img src="rff.jpg.webp" width="450">
 
         <h3>🎮 소주제: 극한의 난이도</h3>
@@ -199,6 +190,77 @@
 <footer>
     <p>© 2025 오늘의 켠왕 3선 – Mini Homepage Project</p>
 </footer>
+
+<!-- 🔽 자바스크립트 (페이지 맨 아래에 배치) -->
+<script>
+    // 🔸 상단 BGM 재생/일시정지 버튼
+    const bgm = document.getElementById("bgm");
+    const btn = document.getElementById("playPauseBtn");
+
+    btn.onclick = () => {
+        if (bgm.paused) {
+            bgm.play();
+            btn.innerText = "⏸";
+        } else {
+            bgm.pause();
+            btn.innerText = "▶";
+        }
+    };
+
+    // 🔸 섹션별 BGM 자동 전환
+    document.addEventListener('DOMContentLoaded', function () {
+        const sectionAudios = [
+            {
+                section: document.querySelector('.lol-section'),
+                audio: document.getElementById('lol-audio')
+            },
+            {
+                section: document.querySelector('.sanabi-section'),
+                audio: document.getElementById('sanabi-audio')
+            },
+            {
+                section: document.querySelector('.adofai-section'),
+                audio: document.getElementById('adofai-audio')
+            }
+        ];
+
+        const valid = sectionAudios.filter(v => v.section && v.audio);
+
+        function stopOtherAudios(except) {
+            valid.forEach(v => {
+                if (v.audio !== except) {
+                    v.audio.pause();
+                    v.audio.currentTime = 0;
+                }
+            });
+        }
+
+        function pauseMainBgm() {
+            if (!bgm.paused) {
+                bgm.pause();
+                btn.innerText = "▶";
+            }
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                const item = valid.find(v => v.section === e.target);
+                if (!item) return;
+
+                if (e.isIntersecting) {
+                    pauseMainBgm();
+                    stopOtherAudios(item.audio);
+                    item.audio.play().catch(err => console.log(err));
+                } else {
+                    item.audio.pause();
+                    item.audio.currentTime = 0;
+                }
+            });
+        }, { threshold: 0.5 });
+
+        valid.forEach(v => observer.observe(v.section));
+    });
+</script>
 
 </body>
 </html>
