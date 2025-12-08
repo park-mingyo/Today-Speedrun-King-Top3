@@ -252,3 +252,31 @@ footer {
     z-index: 9999;
     box-shadow: 0 0 10px #00eaff;
 }
+
+.quiz-section {
+    text-align: center;
+    margin: 60px 0;
+}
+
+.quiz-options button {
+    margin: 15px;
+    padding: 18px 25px;
+    font-size: 21px;
+    border: 2px solid #7dfcff;
+    background: transparent;
+    color: #7dfcff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.quiz-options button:hover {
+    background: #7dfcff;
+    color: #001018;
+    transform: scale(1.1);
+}
+
+#quiz-result {
+    margin-top: 30px;
+    color: #8bf5ff;
+}
