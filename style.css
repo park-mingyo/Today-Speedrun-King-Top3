@@ -238,3 +238,17 @@ footer {
     color: #001018;
     box-shadow: 0 0 12px #00eaff;
 }
+
+/* ============================= */
+/*   스크롤 프로그래스 바        */
+/* ============================= */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 6px;  /* 바 두께 */
+    background: #00eaff; /* 네온 블루 */
+    width: 0%;  /* 스크립트에서 변경됨 */
+    z-index: 9999;
+    box-shadow: 0 0 10px #00eaff;
+}

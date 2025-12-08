@@ -7,6 +7,7 @@
 </head>
 
 <body>
+<div id="scroll-progress"></div>
 
 <header>
     <h1>🎮 오늘의 켠왕 3선</h1>
@@ -265,19 +266,19 @@ window.addEventListener("scroll", () => {
 </script>
 <script>
 const musicPlayer = document.querySelector(".music-player");
+const lolSection = document.querySelector(".lol-section");
 
 window.addEventListener("scroll", () => {
-    const introBottom = document.querySelector(".intro-section").getBoundingClientRect().bottom;
+    const lolTop = lolSection.getBoundingClientRect().top;
 
-    if (introBottom < 100) {
-        // 인트로 벗어나면 보이게
+    if (lolTop < window.innerHeight * 0.8) {   // 화면 80% 지점에서 등장
         musicPlayer.classList.add("show");
     } else {
-        // 다시 올라오면 숨기기
         musicPlayer.classList.remove("show");
     }
 });
 </script>
+
 
 <script>
 document.querySelectorAll(".select-buttons button").forEach(btn => {
@@ -285,6 +286,15 @@ document.querySelectorAll(".select-buttons button").forEach(btn => {
         const target = document.querySelector("." + btn.dataset.target);
         target.scrollIntoView({ behavior: "smooth" });
     });
+});
+</script>
+
+<script>
+window.addEventListener("scroll", () => {
+    const progress = document.getElementById("scroll-progress");
+    const totalHeight = document.body.scrollHeight - window.innerHeight;
+    const progressPercent = (window.scrollY / totalHeight) * 100;
+    progress.style.width = progressPercent + "%";
 });
 </script>
 
