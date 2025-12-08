@@ -187,3 +187,28 @@ footer {
     opacity: 1;
     pointer-events: auto;
 }
+/* ============================= */
+/*   🎚 난이도 게이지 스타일     */
+/* ============================= */
+.difficulty-bar {
+    width: 60%;
+    height: 16px;
+    background: #1b2a34;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0 5px 0;
+    box-shadow: 0 0 10px #00eaff;
+}
+
+.difficulty-bar .fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00eaff, #0088ff);
+    border-radius: 10px;
+    transition: width 0.8s ease;
+}
+
+.difficulty-level {
+    font-size: 16px;
+    color: #8bf5ff;
+    margin-bottom: 20px;
+}
