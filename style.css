@@ -212,3 +212,29 @@ footer {
     color: #8bf5ff;
     margin-bottom: 20px;
 }
+
+/* ============================= */
+/*   방문자 선택 버튼      */
+/* ============================= */
+.select-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.select-buttons button {
+    margin: 0 15px;
+    padding: 30px 50px;
+    font-size: 26px;
+    color: #7dfcff;
+    background: transparent;
+    border: 2px solid #7dfcff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.select-buttons button:hover {
+    background: #7dfcff;
+    color: #001018;
+    box-shadow: 0 0 12px #00eaff;
+}

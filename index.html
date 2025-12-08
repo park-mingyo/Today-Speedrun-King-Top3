@@ -39,6 +39,16 @@
     </div>
 </section>
 
+<!-- 방문자 선택 버튼 -->
+<section class="select-section">
+    <h2>🕹 당신이 도전하고 싶은 켠왕은?</h2>
+    <div class="select-buttons">
+        <button data-target="lol-section">LOL</button>
+        <button data-target="sanabi-section">SANABI</button>
+        <button data-target="adofai-section">ADOFAI</button>
+    </div>
+</section>
+
 <!-- 🎵 산나비 OST 배경 음악 UI -->
 <div class="music-player">
     <audio id="bgm" autoplay loop>
@@ -266,6 +276,15 @@ window.addEventListener("scroll", () => {
         // 다시 올라오면 숨기기
         musicPlayer.classList.remove("show");
     }
+});
+</script>
+
+<script>
+document.querySelectorAll(".select-buttons button").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const target = document.querySelector("." + btn.dataset.target);
+        target.scrollIntoView({ behavior: "smooth" });
+    });
 });
 </script>
 
