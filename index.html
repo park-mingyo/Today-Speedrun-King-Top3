@@ -7,6 +7,7 @@
 </head>
 
 <body>
+<div id="scroll-progress"></div>
 
 <header>
     <h1>🎮 오늘의 켠왕 3선</h1>
@@ -35,7 +36,36 @@
     </div>
 
     <div class="intro-image">
-        <img src="켠왕.jpg" width="320">
+        <img src="켠왕.jpg" width="420">
+    </div>
+</section>
+
+<section class="quiz-section">
+    <h2>🧠 오늘의 켠왕 추천 테스트</h2>
+
+    <div id="quiz-box">
+        <p id="quiz-question">Q1. 당신의 게임 스타일은?</p>
+
+        <div class="quiz-options">
+            <button class="quiz-btn" data-score="lol">전략적으로 천천히 운영한다</button>
+            <button class="quiz-btn" data-score="sanabi">스토리와 감정 몰입이 중요하다</button>
+            <button class="quiz-btn" data-score="adofai">극한 난이도로 손맛을 느끼고 싶다</button>
+        </div>
+    </div>
+
+    <div id="quiz-result" style="display:none;">
+        <h3 id="result-title"></h3>
+        <p id="result-desc"></p>
+    </div>
+</section>
+
+<!-- 방문자 선택 버튼 -->
+<section class="select-section">
+    <h2>🕹 당신이 도전하고 싶은 켠왕은?</h2>
+    <div class="select-buttons">
+        <button data-target="lol-section">LOL</button>
+        <button data-target="sanabi-section">SANABI</button>
+        <button data-target="adofai-section">ADOFAI</button>
     </div>
 </section>
 
@@ -46,7 +76,7 @@
     </audio>
 
     <div class="music-card">
-        <img src="음악사진.jpg" width="80">
+        <img src="sanabi-music.jpg" width="80">
         <p class="music-title">Ending Means Starting Again<br>(Feat. Kang Ayun)</p>
         <div class="music-controls">
             <button id="playPauseBtn">⏸</button>
@@ -75,7 +105,8 @@
     </video>
 
     <!-- 🔊 롤 전용 BGM -->
-    <audio id="lol-audio" src="lol_bgm.mp3"></audio>
+   <audio id="lol-audio" src="lol_bgm.new.mp4"></audio>
+
 
     <div class="content">
         <h2>① 리그 오브 레전드 (League of Legends)</h2>
@@ -99,6 +130,11 @@
             룬테라라는 거대한 세계에서 여러 지역과 세력이 맞서 싸웁니다.<br>
             데마시아, 녹서스, 아이오니아 등 지역마다 복잡한 역사와 이야기가 존재합니다.
         </p>
+        <h3>🎚 난이도 게이지</h3>
+        <div class="difficulty-bar">
+            <div class="fill" style="width: 70%;"></div>
+        </div>
+        <p class="difficulty-level">70%</p>
     </div>
 </section>
 
@@ -112,7 +148,7 @@
     </video>
 
     <!-- 🔊 산나비 전용 BGM -->
-    <audio id="sanabi-audio" src="sanabi_bgm.mp3"></audio>
+    <audio id="sanabi-audio" src="sanabi_bgm.mp4"></audio>
 
     <div class="content">
         <h2>② 산나비 (SANABI)</h2>
@@ -136,7 +172,13 @@
             해커 금마리와 함께 실종 사건, 인격 데이터 실험 등 충격적 진실에 맞섭니다.<br>
             마지막에는 가족애가 폭발하는 감동의 엔딩이 펼쳐집니다.
         </p>
+        <h3>🎚 난이도 게이지</h3>
+        <div class="difficulty-bar">
+            <div class="fill" style="width: 40%;"></div>
+        </div>
+        <p class="difficulty-level">40%</p>
     </div>
+    
 </section>
 
 <hr>
@@ -173,7 +215,14 @@
             두 개의 에너지가 음악 박자에 맞춰 이동하는 독특한 구조.<br>
             스테이지마다 규칙이 바뀌어 도전 욕구를 자극합니다.
         </p>
+        <h3>🎚 난이도 게이지</h3>
+        <div class="difficulty-bar">
+            <div class="fill" style="width: 100%;"></div>
+        </div>
+        <p class="difficulty-level">100%</p>
     </div>
+    
+
 </section>
 
 <hr>
@@ -190,6 +239,165 @@
 <footer>
     <p>© 2025 오늘의 켠왕 3선 – Mini Homepage Project</p>
 </footer>
+<script>
+const playerImg = document.querySelector(".music-card img");
+const playerTitle = document.querySelector(".music-title");
+
+const uiData = [
+    {
+        section: ".lol-section",
+        title: "🎵 리그 오브 레전드 OST",
+        img: "lol-music.jpg"
+    },
+    {
+        section: ".sanabi-section",
+        title: "🎵 Ending Means Starting Again (SANABI)",
+        img: "sanabi-music.jpg"
+    },
+    {
+        section: ".adofai-section",
+        title: "🎵 A Dance of Fire and Ice OST",
+        img: "adofai-music.jpg"
+    }
+];
+
+window.addEventListener("scroll", () => {
+    const midpoint = window.innerHeight / 2;
+
+    uiData.forEach(u => {
+        const sec = document.querySelector(u.section);
+        const rect = sec.getBoundingClientRect();
+
+        if (rect.top <= midpoint && rect.bottom >= midpoint) {
+            playerImg.src = u.img;
+            playerTitle.innerHTML = u.title;
+        }
+    });
+});
+</script>
+<script>
+const musicPlayer = document.querySelector(".music-player");
+const lolSection = document.querySelector(".lol-section");
+
+window.addEventListener("scroll", () => {
+    const lolTop = lolSection.getBoundingClientRect().top;
+
+    if (lolTop < window.innerHeight * 0.8) {   // 화면 80% 지점에서 등장
+        musicPlayer.classList.add("show");
+    } else {
+        musicPlayer.classList.remove("show");
+    }
+});
+</script>
+
+
+<script>
+document.querySelectorAll(".select-buttons button").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const target = document.querySelector("." + btn.dataset.target);
+        target.scrollIntoView({ behavior: "smooth" });
+    });
+});
+</script>
+
+<script>
+window.addEventListener("scroll", () => {
+    const progress = document.getElementById("scroll-progress");
+    const totalHeight = document.body.scrollHeight - window.innerHeight;
+    const progressPercent = (window.scrollY / totalHeight) * 100;
+    progress.style.width = progressPercent + "%";
+});
+</script>
+
+<script>
+let current = "start";
+
+const quizFlow = {
+  start: {
+    question: "Q1. 게임에서 어떤 스타일을 선호하나요?",
+    answers: [
+      { text: "전략과 운영 중심", next: "strategy" },
+      { text: "스토리와 감정 몰입", next: "story" },
+      { text: "컨트롤과 난이도", next: "challenge" }
+    ]
+  },
+
+  strategy: {
+    question: "Q2. 팀워크 요소는 중요한가요?",
+    answers: [
+      { text: "아주 중요하다", next: "resultLOL" },
+      { text: "혼자 하는 게 더 편하다", next: "resultADOFAI" },
+      { text: "둘 다 좋은데 상황 따라 다름", next: "resultSANABI" }
+    ]
+  },
+
+  story: {
+    question: "Q2. 가장 좋아하는 감정선은?",
+    answers: [
+      { text:"눈물/감동/여운", next:"resultSANABI" },
+      { text:"몰입+긴장감", next:"resultADOFAI" },
+      { text:"감정보단 플레이 재미", next:"resultLOL" }
+    ]
+  },
+
+  challenge: {
+    question: "Q2. 실패했을 때 당신의 반응은?",
+    answers: [
+      { text:"멘탈 나가도 계속 도전", next:"resultADOFAI" },
+      { text:"전략 세워서 천천히 다시", next:"resultLOL" },
+      { text:"스토리 몰입으로 위로 받음", next:"resultSANABI" }
+    ]
+  }
+};
+
+function loadQuestion(key) {
+  const data = quizFlow[key];
+  document.getElementById("quiz-question").innerText = data.question;
+
+  const buttons = document.querySelectorAll(".quiz-btn");
+  buttons.forEach((btn, i) => {
+    btn.innerText = data.answers[i].text;
+    btn.dataset.next = data.answers[i].next;
+  });
+}
+
+document.querySelectorAll(".quiz-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const nextKey = btn.dataset.next;
+
+    if(nextKey.startsWith("result")) showResult(nextKey);
+    else {
+      current = nextKey;
+      loadQuestion(current);
+    }
+  });
+});
+
+function showResult(type){
+  document.getElementById("quiz-box").style.display="none";
+  document.getElementById("quiz-result").style.display="block";
+
+  const title = document.getElementById("result-title");
+  const desc = document.getElementById("result-desc");
+
+  if(type === "resultLOL"){
+    title.innerHTML = "🎮 추천 켠왕: 리그 오브 레전드 (LOL)";
+    desc.innerHTML = "전략과 팀워크의 지배자!";
+  }
+  if(type === "resultSANABI"){
+    title.innerHTML = "🎮 추천 켠왕: 산나비 (SANABI)";
+    desc.innerHTML = "감성과 몰입을 중시하는 당신에게!";
+  }
+  if(type === "resultADOFAI"){
+    title.innerHTML = "🎮 추천 켠왕: A Dance of Fire and Ice";
+    desc.innerHTML = "극한 도전을 즐기는 진정한 챌린저!";
+  }
+}
+
+// 초기 로드
+loadQuestion("start");
+</script>
+
 
 <!-- 🔽 자바스크립트 (페이지 맨 아래에 배치) -->
 <script>

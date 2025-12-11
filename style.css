@@ -52,7 +52,7 @@ section {
 }
 
 .intro-image img {
-    width: 320px;
+    width: 420px;
     border-radius: 12px;
     box-shadow: 0 0 20px #00eaff;
 }
@@ -174,4 +174,109 @@ ul li {
 footer {
     text-align: center;   /* 🔥 중앙 정렬 */
     padding-bottom: 30px;
+}
+.music-player {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.music-player.show {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+}
+/* ============================= */
+/*   🎚 난이도 게이지 스타일     */
+/* ============================= */
+.difficulty-bar {
+    width: 60%;
+    height: 16px;
+    background: #1b2a34;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0 5px 0;
+    box-shadow: 0 0 10px #00eaff;
+}
+
+.difficulty-bar .fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00eaff, #0088ff);
+    border-radius: 10px;
+    transition: width 0.8s ease;
+}
+
+.difficulty-level {
+    font-size: 16px;
+    color: #8bf5ff;
+    margin-bottom: 20px;
+}
+
+/* ============================= */
+/*   방문자 선택 버튼      */
+/* ============================= */
+.select-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.select-buttons button {
+    margin: 0 15px;
+    padding: 30px 50px;
+    font-size: 26px;
+    color: #7dfcff;
+    background: transparent;
+    border: 2px solid #7dfcff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.select-buttons button:hover {
+    background: #7dfcff;
+    color: #001018;
+    box-shadow: 0 0 12px #00eaff;
+}
+
+/* ============================= */
+/*   스크롤 프로그래스 바        */
+/* ============================= */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 6px;  /* 바 두께 */
+    background: #00eaff; /* 네온 블루 */
+    width: 0%;  /* 스크립트에서 변경됨 */
+    z-index: 9999;
+    box-shadow: 0 0 10px #00eaff;
+}
+
+.quiz-section {
+    text-align: center;
+    margin: 60px 0;
+}
+
+.quiz-options button {
+    margin: 15px;
+    padding: 18px 25px;
+    font-size: 21px;
+    border: 2px solid #7dfcff;
+    background: transparent;
+    color: #7dfcff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.quiz-options button:hover {
+    background: #7dfcff;
+    color: #001018;
+    transform: scale(1.1);
+}
+
+#quiz-result {
+    margin-top: 30px;
+    color: #8bf5ff;
 }
